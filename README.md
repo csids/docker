@@ -2,4 +2,4 @@
 
 ## csids-sc9-single-user-docker-compose
 
-See http://csids.no/sc9/articles/installation.html for more information.
+See https://csids.no/sc9/articles/installation.html for more information.
