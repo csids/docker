@@ -1,0 +1,31 @@
+---
+services:
+  mssql:
+    restart: always
+    image: csids/sc9-su-mssql:latest
+    networks:
+      csids-sc9-su-net:
+        aliases:
+          - dm-prod
+
+  rstudio:
+    restart: always
+    image: csids/sc9-su-rstudio:4.3.0
+    environment:
+      - RSP_TESTUSER_UID=1001
+      - RSP_TESTUSER=rstudio
+      - RSP_TESTUSER_PASSWD=helloworld
+    volumes:
+      - "containers_volumes_csids_sc9_scids_rstudio:/home/rstudio"
+    depends_on:
+      - "mssql"
+    ports: 
+      - "8787:8787"
+    networks:
+      - csids-sc9-su-net
+
+networks:
+  csids-sc9-su-net:
+
+volumes:
+  containers_volumes_csids_sc9_scids_rstudio:
